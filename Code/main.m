@@ -1,15 +1,8 @@
 % initialize the class
 a = PlottingClass;
 
-% ------- Paths --------- %
-% path to dir with .mat
-path = pwd;
-new = extractBefore(path, 'Code');
-path2 = strcat(new, 'Data');
-a.path = path2;
-
 % !! only change inputs !! %
-% ------- Inputs to chage ---------- %
+% ------------ Inputs ------------- %
 % name of current .mat to be processed
 filename = '/11142018_222057_UTC.mat';
 % range
@@ -25,11 +18,15 @@ if show == 0;
 else
     a.figs = 'on';
 end 
-% ------------------------ %
+% --------------------------------- %
+
+% ------- Paths --------- %
+% path to dir with .mat
+path = pwd;
+new = extractBefore(path, 'Code');
+path2 = strcat(new, 'Data');
+a.path = path2;
  
-
-
-
 % location for the images
 a.imagedir = extractBefore(a.path, "Data");
 
