@@ -13,6 +13,9 @@ filename = '/11142018_222057_UTC.mat';
 Range = [0, 0.25];
 % ------------------------ %
 
+% location for the images
+a.imagedir = extractBefore(path, "Data");
+
 % make a file path to be found
 filepath = strcat(path, filename);
 % the data is an object

@@ -11,6 +11,8 @@ classdef PlottingClass
       rawdata
       % name for saving plots
       newname
+      % location for the images
+      imagedir
       % the data of the microphones
       R1
       R2
@@ -116,8 +118,9 @@ classdef PlottingClass
     type = '.png';
     tog = strcat(obj.newname, type);
     slash = '/';
-    loc = strcat(obj.path, slash, tog);
+    loc = strcat(obj.imagedir, 'Images', slash, tog);
     saveas(h, loc);
+    close(h);
       end
         % The function will take the recoded data and plot the values
       function Plotting = Data(obj)
@@ -151,7 +154,7 @@ classdef PlottingClass
         type = '.png';
         tog = strcat(thisplot, obj.newname, type);
         slash = '/';
-        loc = strcat(obj.path, slash, tog);
+        loc = strcat(obj.imagedir, 'Images', slash, tog);
         saveas(l, loc);
         close(l);
 
