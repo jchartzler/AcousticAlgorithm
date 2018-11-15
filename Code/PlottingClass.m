@@ -46,29 +46,6 @@ classdef PlottingClass
            thisone = figure;
            set(thisone, 'Visible', 'off');
            
-           %Time Domain
-%            subplot(2,3,1)
-%            plot(time,obj.R1)
-%            title('Microphone 1');
-%            xlabel('Time');
-%            ylabel('Amplitude');
-%            ylim([-1 1]);
-% 
-%            subplot(2,3,2)
-%            plot(time, obj.R2)
-%            title('Microphone 2');
-%            xlabel('Time');
-%            ylabel('Amplitude');
-%            ylim([-1 1]);
-%            
-% 
-%            subplot(2,3,3)
-%            plot(time,obj.R3)
-%            title('Microphone 3');
-%            xlabel('Time');
-%            ylabel('Amplitude');
-%            ylim([-1 1]);
-
            %Frequency Domain
            subplot(2,2,1)
            Yx = fft(obj.R1);
@@ -76,9 +53,9 @@ classdef PlottingClass
            n = ceil(n);
            freq = linspace(0, FoldingFreq, n);
            amp_specx = abs(Yx)/n;
-           stem(freq,amp_specx(1:n), '-r');
+           stem(freq,amp_specx(1:n), '-b');
            xlim([0 100]);
-           title('Microphone 1');
+           title('Microphone 1: Roof');
            xlabel('Frequency (Hz)');
            ylabel('Linear Magnitude');
       
@@ -91,7 +68,7 @@ classdef PlottingClass
            amp_specy = abs(Yy)/n;
            stem(freq,amp_specy(1:n), '-g');
            xlim([0 100]);
-           title('Microphone 2');
+           title('Microphone 2: South');
            xlabel('Frequency (Hz)');
            ylabel('Linear Magnitude');
 
@@ -101,9 +78,9 @@ classdef PlottingClass
            n = ceil(n);
            freq = linspace(0,FoldingFreq,n);
            amp_specz = abs(Yz)/n;
-           stem(freq,amp_specz(1:n), '-b');
+           stem(freq,amp_specz(1:n), '-r');
            xlim([0 100]);
-           title('Microphone 3');
+           title('Microphone 3: North');
            xlabel('Frequency (Hz)');
            ylabel('Linear Magnitude');
            
