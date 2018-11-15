@@ -13,6 +13,11 @@ classdef PlottingClass
       newname
       % location for the images
       imagedir
+      % the range of the data to view
+      Range
+      % the locations of the red vertical lines
+      left
+      right
       % the data of the microphones
       R1
       R2
@@ -20,7 +25,7 @@ classdef PlottingClass
    end
    
    methods
-      function lowpass = filtering(obj, s, name, Range)
+      function lowpass = filtering(obj, s, name)
           %% the controls for the plot
           
           fs = 1000;            % sample frequency
@@ -39,8 +44,8 @@ classdef PlottingClass
          h = figure;
          set(h, 'Visible', 'off');
 
-         a=floor(Range(1)*(size(s,1)-1)/(1-0)+1);
-         b=ceil(Range(2)*(size(s,1)-1)/(1-0)+1);
+         a=floor(obj.Range(1)*(size(s,1)-1)/(1-0)+1);
+         b=ceil(obj.Range(2)*(size(s,1)-1)/(1-0)+1);
          s = s(a:b,:);
          t=(0:1/fs:size(s,1)/fs-1/fs)'; 
          
@@ -110,8 +115,8 @@ classdef PlottingClass
     ylabel('Power/Frequency (dB/Hz)')
     legend({'Microphone 1: Roof', 'Microphone 2: South', 'Microphone 3: North'}, 'location', 'northwest')
 
-    plot([13,13],[-120,0],'--r')
-    plot([8,8],[-120,0],'--r')
+    plot(obj.right, [-120,0],'--r')
+    plot(obj.left, [-120,0],'--r')
 
     axis([.5 100 -120 0])
 

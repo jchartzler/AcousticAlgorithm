@@ -10,7 +10,10 @@ filename = '/11142018_222057_UTC.mat';
 
 
 % ------- Range ---------- %
-Range = [0, 0.25];
+a.Range = [0, 0.25];
+% red lines
+a.right = [13,13];
+a.left = [8,8];
 % ------------------------ %
 
 % location for the images
@@ -38,4 +41,4 @@ a.Data();
 all = rawdata(:,:);
 % call lowpass, filter and plot the data
 
-a.filtering(all, a.newname, Range);
+a.filtering(all, a.newname);
