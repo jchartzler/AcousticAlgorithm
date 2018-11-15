@@ -1,8 +1,17 @@
 % initialize the class
 a = PlottingClass;
-% add the path to instances
+
+% ------- Paths --------- %
+% path to dir with .mat
 path = '/Users/jackcook/Documents/Documents/Fall_2018/ExperimentalFluids/AcousticAlgorithm';
+% name of current .mat to be processed
 filename = '/11142018_222057_UTC.mat';
+
+
+% ------- Range ---------- %
+Range = [0, 0.25];
+% ------------------------ %
+
 % make a file path to be found
 filepath = strcat(path, filename);
 % the data is an object
@@ -19,10 +28,10 @@ a.R2 = rawdata(1:1:end,2);
 a.R3 = rawdata(1:1:end,3);
 
 % call the function plotting to display the results of the recording
-a.Data(a.R1, a.R2, a.R3, a.newname);
+a.Data();
 
 % setup data for lowpass filter
 all = rawdata(:,:);
 % call lowpass, filter and plot the data
 
-a.filtering(all, a.newname);
+a.filtering(all, a.newname, Range);

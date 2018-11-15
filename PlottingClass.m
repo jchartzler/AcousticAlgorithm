@@ -18,11 +18,11 @@ classdef PlottingClass
    end
    
    methods
-      function lowpass = filtering(obj, s, name)
+      function lowpass = filtering(obj, s, name, Range)
           %% the controls for the plot
           
           fs = 1000;            % sample frequency
-          Range = [0, 0.25];
+          
           dT = 30;                %segment period in seconds
           Ov = 0.10;              %overlap in percentage of segment period
           ONseg = 0;              %1=plot every segment; 0=only plot average for each mic
@@ -116,28 +116,28 @@ classdef PlottingClass
     saveas(h, strcat(name, type));
       end
         % The function will take the recoded data and plot the values
-      function Plotting = Data(obj, R1, R2, R3, name)
+      function Plotting = Data(obj)
         time = .001:.001:1200;
 
         l = figure(1);
         set(l, 'Visible', 'off');
 
         subplot(2,2,1);
-        plot(time,R1)
+        plot(time,obj.R1)
         title('Microphone 1: Roof')
         ylim([-1 1])
         xlabel('Time (seconds)')
         ylabel('Pressure [Pa]')
 
         subplot(2,2,2);
-        plot(time,R2)
+        plot(time,obj.R2)
         title('Microphone 2: South')
         ylim([-1 1])
         xlabel('Time (seconds)')
         ylabel('Pressure [Pa]')
 
         subplot(2,2,[3,4]);
-        plot(time,R3)
+        plot(time,obj.R3)
         title('Microphone 3: North')
         ylim([-1 1])
         xlabel('Time (seconds)')
@@ -145,7 +145,7 @@ classdef PlottingClass
 
         thisplot = 'rawdata - ';
         type = '.png';
-        together1 = strcat(thisplot, name);
+        together1 = strcat(thisplot, obj.newname);
         saveas(l, strcat(together1, type));
         close(l);
 
