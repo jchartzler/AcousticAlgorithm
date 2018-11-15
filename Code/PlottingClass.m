@@ -113,10 +113,10 @@ classdef PlottingClass
 
     xlabel('Frequency (Hz)')
     ylabel('Power/Frequency (dB/Hz)')
-    legend({'Microphone 1: Roof', 'Microphone 2: South', 'Microphone 3: North'}, 'location', 'northwest')
 
     plot(obj.right, [-120,0],'--r')
-    plot(obj.left, [-120,0],'--r')
+    plot(obj.left, [-120,0],'--r', 'HandleVisibility','off')
+    legend({'Microphone 1: Roof', 'Microphone 2: South', 'Microphone 3: North', 'Range'}, 'location', 'northwest')
 
     axis([.5 100 -120 0])
 
