@@ -17,13 +17,17 @@ a.Range = [0, 0.25];
 % red lines
 a.right = [13,13];
 a.left = [8,8];
+
+% show figures or dont show figures
+show = 0;
+if show == 0;
+    a.figs = 'off';
+else
+    a.figs = 'on';
+end 
 % ------------------------ %
  
-% would you like to do data analysis in matlab
-% yes
-%a.figs = 'on';
-% no
-a.figs = 'off';
+
 
 
 % location for the images
