@@ -135,21 +135,21 @@ classdef PlottingClass
         set(l, 'Visible', 'off');
 
         subplot(2,2,1);
-        plot(time,obj.R1)
+        plot(time,obj.R1, '-b')
         title('Microphone 1: Roof')
         ylim([-1 1])
         xlabel('Time (seconds)')
         ylabel('Pressure [Pa]')
 
         subplot(2,2,2);
-        plot(time,obj.R2)
+        plot(time,obj.R2, '-g')
         title('Microphone 2: South')
         ylim([-1 1])
         xlabel('Time (seconds)')
         ylabel('Pressure [Pa]')
 
         subplot(2,2,[3,4]);
-        plot(time,obj.R3)
+        plot(time,obj.R3, '-r')
         title('Microphone 3: North')
         ylim([-1 1])
         xlabel('Time (seconds)')
