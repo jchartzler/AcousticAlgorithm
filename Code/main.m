@@ -42,3 +42,6 @@ all = rawdata(:,:);
 % call lowpass, filter and plot the data
 
 a.filtering(all, a.newname);
+
+% do some fft stuff
+a.Perform()

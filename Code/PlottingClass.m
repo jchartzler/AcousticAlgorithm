@@ -25,6 +25,98 @@ classdef PlottingClass
    end
    
    methods
+       function perform = Perform(obj)
+           % find the total length of the recording
+           L = length(obj.R1);
+           % the length will always have a certain delta t associated
+           timestep = 1200 / L;
+           % the start and the stop view of the data given the range 
+           % ----- Finish Later ----- %
+           % beginning = obj.range(1) * L;
+           % stop = obj.range(2) * L;
+           % ----- 
+           
+           % create a time array
+           time = linspace(0, 20, 1200000);
+           
+           % sample rate 
+           fs = 1 / timestep;        % Hz !
+           FoldingFreq = fs / 2;
+           
+           thisone = figure;
+           set(thisone, 'Visible', 'off');
+           
+           %Time Domain
+%            subplot(2,3,1)
+%            plot(time,obj.R1)
+%            title('Microphone 1');
+%            xlabel('Time');
+%            ylabel('Amplitude');
+%            ylim([-1 1]);
+% 
+%            subplot(2,3,2)
+%            plot(time, obj.R2)
+%            title('Microphone 2');
+%            xlabel('Time');
+%            ylabel('Amplitude');
+%            ylim([-1 1]);
+%            
+% 
+%            subplot(2,3,3)
+%            plot(time,obj.R3)
+%            title('Microphone 3');
+%            xlabel('Time');
+%            ylabel('Amplitude');
+%            ylim([-1 1]);
+
+           %Frequency Domain
+           subplot(2,2,1)
+           Yx = fft(obj.R1);
+           n = length(obj.R1)/2;
+           n = ceil(n);
+           freq = linspace(0, FoldingFreq, n);
+           amp_specx = abs(Yx)/n;
+           stem(freq,amp_specx(1:n));
+           xlim([0 100]);
+           title('Microphone 1');
+           xlabel('Frequency (Hz)');
+           ylabel('Linear Magnitude');
+      
+
+           subplot(2,2,2)
+           Yy = fft(obj.R2);
+           n = length(obj.R2)/2;
+           n = ceil(n);
+           freq = linspace(0,FoldingFreq,n);
+           amp_specy = abs(Yy)/n;
+           stem(freq,amp_specy(1:n));
+           xlim([0 100]);
+           title('Microphone 2');
+           xlabel('Frequency (Hz)');
+           ylabel('Linear Magnitude');
+
+           subplot(2,2,[3, 4])
+           Yz = fft(obj.R3);
+           n = length(obj.R3)/2;
+           n = ceil(n);
+           freq = linspace(0,FoldingFreq,n);
+           amp_specz = abs(Yz)/n;
+           stem(freq,amp_specz(1:n));
+           xlim([0 100]);
+           title('Microphone 3');
+           xlabel('Frequency (Hz)');
+           ylabel('Linear Magnitude');
+           
+           % save the figure
+           type = '.png';
+           tog = strcat('create - ', obj.newname, type);
+           slash = '/';
+           loc = strcat(obj.imagedir, 'Images', slash, tog);
+           saveas(thisone, loc);
+           close(thisone);
+           
+       end
+       
       function lowpass = filtering(obj, s, name)
           %% the controls for the plot
           
