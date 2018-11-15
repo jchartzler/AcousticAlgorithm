@@ -106,6 +106,7 @@ classdef PlottingClass
 
     xlabel('Frequency (Hz)')
     ylabel('Power/Frequency (dB/Hz)')
+    legend({'Microphone 1: Roof', 'Microphone 2: South', 'Microphone 3: North'}, 'location', 'northwest')
 
     plot([13,13],[-120,0],'--r')
     plot([8,8],[-120,0],'--r')
@@ -113,7 +114,10 @@ classdef PlottingClass
     axis([.5 100 -120 0])
 
     type = '.png';
-    saveas(h, strcat(name, type));
+    tog = strcat(obj.newname, type);
+    slash = '/';
+    loc = strcat(obj.path, slash, tog);
+    saveas(h, loc);
       end
         % The function will take the recoded data and plot the values
       function Plotting = Data(obj)
@@ -145,8 +149,10 @@ classdef PlottingClass
 
         thisplot = 'rawdata - ';
         type = '.png';
-        together1 = strcat(thisplot, obj.newname);
-        saveas(l, strcat(together1, type));
+        tog = strcat(thisplot, obj.newname, type);
+        slash = '/';
+        loc = strcat(obj.path, slash, tog);
+        saveas(l, loc);
         close(l);
 
         % end the plotting function

@@ -4,6 +4,7 @@ a = PlottingClass;
 % ------- Paths --------- %
 % path to dir with .mat
 path = '/Users/jackcook/Documents/Documents/Fall_2018/ExperimentalFluids/AcousticAlgorithm';
+a.path = path;
 % name of current .mat to be processed
 filename = '/11142018_222057_UTC.mat';
 
