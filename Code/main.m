@@ -3,13 +3,16 @@ a = PlottingClass;
 
 % ------- Paths --------- %
 % path to dir with .mat
-path = '/Users/jackcook/Documents/Documents/Fall_2018/ExperimentalFluids/AcousticAlgorithm/Data';
-a.path = path;
+path = pwd;
+new = extractBefore(path, 'Code');
+path2 = strcat(new, 'Data');
+a.path = path2;
+
+% !! only change inputs !! %
+% ------- Inputs to chage ---------- %
 % name of current .mat to be processed
 filename = '/11142018_222057_UTC.mat';
-
-
-% ------- Range ---------- %
+% range
 a.Range = [0, 0.25];
 % red lines
 a.right = [13,13];
@@ -24,10 +27,10 @@ a.figs = 'off';
 
 
 % location for the images
-a.imagedir = extractBefore(path, "Data");
+a.imagedir = extractBefore(a.path, "Data");
 
 % make a file path to be found
-filepath = strcat(path, filename);
+filepath = strcat(new, '/Data', filename);
 % the data is an object
 S = load(filepath);
 % we want the instance rdata inside of sp
