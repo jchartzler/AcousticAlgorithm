@@ -60,8 +60,8 @@ classdef PlottingClass
            title('Microphone 1: Roof');
            xlabel('Frequency (Hz)');
            ylabel('Linear Magnitude');
+           set(gca,'FontSize',20);
       
-
            subplot(2,2,2)
            Yy = fft(obj.R2);
            n = length(obj.R2)/2;
@@ -73,6 +73,7 @@ classdef PlottingClass
            title('Microphone 2: South');
            xlabel('Frequency (Hz)');
            ylabel('Linear Magnitude');
+           set(gca,'FontSize',20);
 
            subplot(2,2,[3, 4])
            Yz = fft(obj.R3);
@@ -85,10 +86,11 @@ classdef PlottingClass
            title('Microphone 3: North');
            xlabel('Frequency (Hz)');
            ylabel('Linear Magnitude');
+           set(gca,'FontSize',20);
            
            % save the figure
            type = '.png';
-           tog = strcat('create - ', obj.newname, type);
+           tog = strcat(obj.newname, ' freqdomain', type);
            slash = '/';
            loc = strcat(obj.imagedir, 'Images', slash, tog);
            saveas(thisone, loc);
@@ -189,11 +191,12 @@ classdef PlottingClass
     plot(obj.right, [-120,0],'--r')
     plot(obj.left, [-120,0],'--r', 'HandleVisibility','off')
     legend({'Microphone 1: Roof', 'Microphone 2: South', 'Microphone 3: North', 'Range'}, 'location', 'northwest')
+    set(gca,'FontSize',20);
 
     axis([.5 100 -120 0])
 
     type = '.png';
-    tog = strcat(obj.newname, type);
+    tog = strcat(obj.newname, ' - spectra', type);
     slash = '/';
     loc = strcat(obj.imagedir, 'Images', slash, tog);
     saveas(h, loc);
@@ -213,6 +216,7 @@ classdef PlottingClass
         ylim([-1 1])
         xlabel('Time (seconds)')
         ylabel('Pressure [Pa]')
+        set(gca,'FontSize',20);
 
         subplot(2,2,2);
         plot(time,obj.R2, '-g')
@@ -220,6 +224,7 @@ classdef PlottingClass
         ylim([-1 1])
         xlabel('Time (seconds)')
         ylabel('Pressure [Pa]')
+        set(gca,'FontSize',20);
 
         subplot(2,2,[3,4]);
         plot(time,obj.R3, '-r')
@@ -227,15 +232,16 @@ classdef PlottingClass
         ylim([-1 1])
         xlabel('Time (seconds)')
         ylabel('Pressure [Pa]')
+        set(gca,'FontSize',20);
 
-        thisplot = 'rawdata - ';
+        %thisplot = 'rawdata - ';
         type = '.png';
-        tog = strcat(thisplot, obj.newname, type);
+        tog = strcat(obj.newname, ' - rawdata', type);
         slash = '/';
         loc = strcat(obj.imagedir, 'Images', slash, tog);
         saveas(l, loc);
         pause(obj.figs)
-        %close(l);
+        close(l);
 
         % end the plotting function
         end

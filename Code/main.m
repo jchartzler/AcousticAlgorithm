@@ -4,7 +4,7 @@ a = PlottingClass;
 % !! only change inputs !! %
 % ------------ Inputs ------------- %
 % name of current .mat to be processed
-filename = '/11142018_222057_UTC.mat';
+filename = '/18_11_14/11142018_200015_UTC.mat';
 % range
 a.Range = [0, 0.25];
 % red lines
@@ -12,8 +12,8 @@ a.right = [13,13];
 a.left = [8,8];
 
 % show figures or dont show figures
-show = 0;
-if show == 0;
+show = 1;
+if show == 1
     a.figs = 'off';
 else
     a.figs = 'on';
