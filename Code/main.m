@@ -15,6 +15,13 @@ a.Range = [0, 0.25];
 a.right = [13,13];
 a.left = [8,8];
 % ------------------------ %
+ 
+% would you like to do data analysis in matlab
+% yes
+%a.figs = 'on';
+% no
+a.figs = 'off';
+
 
 % location for the images
 a.imagedir = extractBefore(path, "Data");

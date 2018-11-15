@@ -18,6 +18,8 @@ classdef PlottingClass
       % the locations of the red vertical lines
       left
       right
+      % for whether or not to open figures
+      figs
       % the data of the microphones
       R1
       R2
@@ -44,7 +46,7 @@ classdef PlottingClass
            FoldingFreq = fs / 2;
            
            thisone = figure;
-           set(thisone, 'Visible', 'off');
+           set(thisone, 'Visible', obj.figs);
            
            %Frequency Domain
            subplot(2,2,1)
@@ -90,7 +92,8 @@ classdef PlottingClass
            slash = '/';
            loc = strcat(obj.imagedir, 'Images', slash, tog);
            saveas(thisone, loc);
-           close(thisone);
+           pause(obj.figs)
+           %close(thisone);
            
        end
        
@@ -111,7 +114,7 @@ classdef PlottingClass
          end
           
          h = figure;
-         set(h, 'Visible', 'off');
+         set(h, 'Visible', obj.figs);
 
          a=floor(obj.Range(1)*(size(s,1)-1)/(1-0)+1);
          b=ceil(obj.Range(2)*(size(s,1)-1)/(1-0)+1);
@@ -194,14 +197,15 @@ classdef PlottingClass
     slash = '/';
     loc = strcat(obj.imagedir, 'Images', slash, tog);
     saveas(h, loc);
-    close(h);
+    pause(obj.figs)
+    %close(h);
       end
         % The function will take the recoded data and plot the values
       function Plotting = Data(obj)
         time = .001:.001:1200;
 
-        l = figure(1);
-        set(l, 'Visible', 'off');
+        l = figure;
+        set(l, 'Visible', obj.figs);
 
         subplot(2,2,1);
         plot(time,obj.R1, '-b')
@@ -230,7 +234,8 @@ classdef PlottingClass
         slash = '/';
         loc = strcat(obj.imagedir, 'Images', slash, tog);
         saveas(l, loc);
-        close(l);
+        pause(obj.figs)
+        %close(l);
 
         % end the plotting function
         end
