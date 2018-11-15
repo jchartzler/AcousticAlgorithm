@@ -76,7 +76,7 @@ classdef PlottingClass
            n = ceil(n);
            freq = linspace(0, FoldingFreq, n);
            amp_specx = abs(Yx)/n;
-           stem(freq,amp_specx(1:n));
+           stem(freq,amp_specx(1:n), '-r');
            xlim([0 100]);
            title('Microphone 1');
            xlabel('Frequency (Hz)');
@@ -89,7 +89,7 @@ classdef PlottingClass
            n = ceil(n);
            freq = linspace(0,FoldingFreq,n);
            amp_specy = abs(Yy)/n;
-           stem(freq,amp_specy(1:n));
+           stem(freq,amp_specy(1:n), '-g');
            xlim([0 100]);
            title('Microphone 2');
            xlabel('Frequency (Hz)');
@@ -101,7 +101,7 @@ classdef PlottingClass
            n = ceil(n);
            freq = linspace(0,FoldingFreq,n);
            amp_specz = abs(Yz)/n;
-           stem(freq,amp_specz(1:n));
+           stem(freq,amp_specz(1:n), '-b');
            xlim([0 100]);
            title('Microphone 3');
            xlabel('Frequency (Hz)');
